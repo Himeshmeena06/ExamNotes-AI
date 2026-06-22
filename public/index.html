@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ExamNotes AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="particles" aria-hidden="true"></div>
+    <aside class="sidebar">
+      <a class="brand" href="#landing" data-route="landing" aria-label="ExamNotes AI home">
+        <span class="brand-mark">E</span>
+        <span>ExamNotes AI</span>
+      </a>
+      <nav class="nav">
+        <a href="#dashboard" data-route="dashboard">Dashboard</a>
+        <a href="#notes" data-route="notes">Notes</a>
+        <a href="#pyq" data-route="pyq">PYQ Analyzer</a>
+        <a href="#planner" data-route="planner">Study Planner</a>
+        <a href="#quiz" data-route="quiz">Quiz</a>
+        <a href="#flashcards" data-route="flashcards">Flashcards</a>
+        <a href="#store" data-route="store">Gems Store</a>
+        <a href="#profile" data-route="profile">Profile</a>
+      </nav>
+      <div class="sidebar-meter">
+        <span>Gems Balance</span>
+        <strong id="gemBalance">420</strong>
+        <div class="meter"><i style="width: 68%"></i></div>
+      </div>
+    </aside>
+
+    <main class="shell">
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+        <div class="search">Ask for notes, PYQs, formulas, diagrams...</div>
+        <a class="login-pill" href="#login" data-route="login">Google Login +100 Gems</a>
+      </header>
+
+      <section class="page landing active" id="landing">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">AI exam intelligence platform</span>
+            <h1>ExamNotes AI</h1>
+            <p>Generate exam-focused notes, decode previous year papers, predict high-weightage questions, and turn revision chaos into a precise study plan.</p>
+            <div class="hero-actions">
+              <a class="primary" href="#dashboard" data-route="dashboard">Open Dashboard</a>
+              <a class="secondary" href="#notes" data-route="notes">Generate Notes</a>
+            </div>
+          </div>
+          <div class="hero-panel">
+            <div class="ai-orbit"><span></span><span></span><span></span></div>
+            <h2 id="typewriter">Analyzing PYQ patterns...</h2>
+            <div class="prediction-row"><span>Transport Layer</span><strong>91%</strong></div>
+            <div class="prediction-row"><span>CPU Scheduling</span><strong>88%</strong></div>
+            <div class="prediction-row"><span>DBMS Normalization</span><strong>84%</strong></div>
+          </div>
+        </div>
+        <div class="feature-strip">
+          <article><strong>25</strong><span>Gems per AI action</span></article>
+          <article><strong>92%</strong><span>Question probability scoring</span></article>
+          <article><strong>15 day</strong><span>Smart study plan builder</span></article>
+        </div>
+      </section>
+
+      <section class="page" id="login">
+        <div class="section-head">
+          <span class="eyebrow">Authentication</span>
+          <h2>Welcome back</h2>
+          <p>Production setup uses Google OAuth. Demo login instantly loads a student profile with the 100-gem signup reward.</p>
+        </div>
+        <button class="google-button" id="demoLogin">Continue with Google</button>
+      </section>
+
+      <section class="page" id="dashboard">
+        <div class="section-head">
+          <span class="eyebrow">Student command center</span>
+          <h2>Dashboard</h2>
+          <p>Track preparation, gems, generated assets, and AI readiness insights.</p>
+        </div>
+        <div class="stats-grid">
+          <article><span>Gems Remaining</span><strong>420</strong></article>
+          <article><span>Notes Generated</span><strong>36</strong></article>
+          <article><span>Subjects Studied</span><strong>8</strong></article>
+          <article><span>Study Hours</span><strong>64</strong></article>
+        </div>
+        <div class="dashboard-grid">
+          <div class="panel">
+            <h3>AI Insights</h3>
+            <div class="score-ring" style="--score: 85"><b>85%</b><span>Preparation</span></div>
+            <div class="insight-list">
+              <p><strong>Confidence:</strong> 78%</p>
+              <p><strong>Exam Readiness:</strong> 82%</p>
+              <p><strong>Weak:</strong> Operating Systems</p>
+              <p><strong>Strong:</strong> DBMS, Computer Networks</p>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>Weightage Forecast</h3>
+            <canvas id="weightageChart" width="640" height="300"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="notes">
+        <div class="section-head">
+          <span class="eyebrow">AI notes generator</span>
+          <h2>Generate Exam Notes</h2>
+          <p>Choose academic context and get complete, short, revision, or one-day-before notes.</p>
+        </div>
+        <form class="tool-grid" id="notesForm">
+          <label>Class / Course<input name="course" value="B.Tech IT" /></label>
+          <label>Board / University<input name="board" value="AKTU" /></label>
+          <label>Subject<input name="subject" value="Computer Networks" /></label>
+          <label>Topic<input name="topic" value="Data Link Layer" /></label>
+          <label>Difficulty<select name="difficulty"><option>Exam Focused</option><option>Beginner</option><option>Advanced</option></select></label>
+          <label>Mode<select name="mode"><option>Complete Notes</option><option>Short Notes</option><option>Revision Notes</option><option>One-Day Before Exam Notes</option></select></label>
+          <button class="primary form-action" type="submit">Generate Notes - 25 Gems</button>
+        </form>
+        <div class="output-panel" id="notesOutput"></div>
+      </section>
+
+      <section class="page" id="pyq">
+        <div class="section-head">
+          <span class="eyebrow">PYQ intelligence</span>
+          <h2>Analyze Previous Year Papers</h2>
+          <p>Upload PDFs, DOCX files, or images to extract repeated topics, question frequency, and expected weightage.</p>
+        </div>
+        <form class="upload-panel" id="pyqForm">
+          <input type="file" name="papers" multiple accept=".pdf,.docx,image/*" />
+          <button class="primary" type="submit">Analyze PYQs - 25 Gems</button>
+        </form>
+        <div class="heatmap" id="heatmap"></div>
+        <div class="output-panel" id="pyqOutput"></div>
+      </section>
+
+      <section class="page" id="planner">
+        <div class="section-head">
+          <span class="eyebrow">Personal strategy</span>
+          <h2>Smart Study Plan</h2>
+          <p>Prioritize high-weightage topics across remaining days.</p>
+        </div>
+        <form class="compact-form" id="planForm">
+          <label>Days Remaining<input name="days" type="number" min="1" max="30" value="15" /></label>
+          <button class="primary" type="submit">Create Plan - 25 Gems</button>
+        </form>
+        <div class="timeline" id="planOutput"></div>
+      </section>
+
+      <section class="page" id="quiz">
+        <div class="section-head">
+          <span class="eyebrow">Practice engine</span>
+          <h2>AI Quiz Generator</h2>
+          <p>Generate MCQs, true/false, fill in the blanks, and numericals from any topic.</p>
+        </div>
+        <form class="compact-form" id="quizForm">
+          <label>Topic<input name="topic" value="Data Link Layer" /></label>
+          <button class="primary" type="submit">Generate Quiz - 25 Gems</button>
+        </form>
+        <div class="output-panel" id="quizOutput"></div>
+      </section>
+
+      <section class="page" id="flashcards">
+        <div class="section-head">
+          <span class="eyebrow">Rapid revision</span>
+          <h2>AI Flashcards</h2>
+          <p>Turn concepts into quick question-answer cards for active recall.</p>
+        </div>
+        <button class="primary" id="flashBtn">Generate Flashcards - 25 Gems</button>
+        <div class="flash-grid" id="flashOutput"></div>
+      </section>
+
+      <section class="page" id="store">
+        <div class="section-head">
+          <span class="eyebrow">Gems economy</span>
+          <h2>Gems Store</h2>
+          <p>Recharge gems for AI generation, PYQ analysis, plans, quizzes, and predictions.</p>
+        </div>
+        <div class="pricing-grid">
+          <article><h3>Starter</h3><strong>50 Gems</strong><span>Rs. 5</span><button>Buy</button></article>
+          <article><h3>Student</h3><strong>250 Gems</strong><span>Rs. 20</span><button>Buy</button></article>
+          <article class="featured"><h3>Pro</h3><strong>1000 Gems</strong><span>Rs. 75</span><button>Buy</button></article>
+          <article><h3>Premium</h3><strong>5000 Gems</strong><span>Rs. 299</span><button>Buy</button></article>
+        </div>
+      </section>
+
+      <section class="page" id="profile">
+        <div class="section-head">
+          <span class="eyebrow">Profile</span>
+          <h2>Aarav Sharma</h2>
+          <p>Google authenticated student workspace with saved generations and analytics.</p>
+        </div>
+        <div class="profile-row">
+          <div class="avatar">AS</div>
+          <div>
+            <h3>aarav@example.com</h3>
+            <p>Signup reward claimed: 100 Gems</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
